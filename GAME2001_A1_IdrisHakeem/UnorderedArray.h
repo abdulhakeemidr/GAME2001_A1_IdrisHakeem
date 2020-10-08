@@ -2,23 +2,12 @@
 #include <cassert>
 #include "Array.h"
 
-template <class T>
-class UnorderedArray : public Array<T>
+template<class T>
+class UnorderedArray: public Array<T>
 {
 public:
 	// Constructor
-	UnorderedArray(int size, int growBy = 1) : Array(size) {}
-		//m_array(NULL), m_maxSize(0), m_growSize(0), m_numElements(0)
-	/*{
-		if (size)
-		{
-			m_maxSize = size;
-			m_array = new T[m_maxSize];
-			memset(m_array, 0, sizeof(T) * m_maxSize);
-
-			m_growSize = ((growBy > 0) ? growBy : 0);
-		}
-	}*/
+	UnorderedArray(int size, int growBy = 1) : Array<T>(size, growBy){}
 	// Destructor
 	~UnorderedArray()
 	{
@@ -28,8 +17,8 @@ public:
 			m_array = NULL;
 		}
 	}
-private:
-	// Insertion -- Big-O is O(1)
+	// Insertions
+	// Fast insertion for UnorderedArray -- Big-O is O(1)
 	void push(T val)
 	{
 		assert(m_array != NULL); // Debugging purposes
@@ -41,8 +30,8 @@ private:
 		m_array[m_numElements] = val;
 		m_numElements++;
 	}
-
-	virtual int search(T val)
+	// Searching (Linear search) -- Big O = O(N)
+	int search(T val)
 	{
 		assert(m_array != NULL);
 
@@ -56,5 +45,4 @@ private:
 		}
 		return -1;
 	}
-private:
 };
