@@ -7,7 +7,7 @@ class OrderedArray: public Array<T>
 {
 public:
 	// Constructor
-	OrderedArray(int size, int growBy = 1) : Array<T>(size, growBy){}
+	OrderedArray(int size, int growBy = 2) : Array<T>(size, growBy){}
 	// Destructor
 	~OrderedArray()
 	{

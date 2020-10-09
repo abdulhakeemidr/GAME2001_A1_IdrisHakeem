@@ -7,7 +7,7 @@ class UnorderedArray: public Array<T>
 {
 public:
 	// Constructor
-	UnorderedArray(int size, int growBy = 1) : Array<T>(size, growBy){}
+	UnorderedArray(int size, int growBy = 2) : Array<T>(size, growBy){}
 	// Destructor
 	~UnorderedArray()
 	{

@@ -6,7 +6,7 @@ class Array
 {
 public:
 	// Constructor
-	Array(int size, int growBy = 1) :
+	Array(int size, int growBy = 2) :
 		m_array(NULL), m_maxSize(0), m_growSize(0), m_numElements(0)
 	{
 		if (size)
@@ -30,6 +30,8 @@ public:
 	}
 	// Insertion -- Big O = O(N)
 	virtual int push(T val) = 0;
+
+	// Deletion
 	void pop()
 	{
 		if (m_numElements > 0)
@@ -57,6 +59,7 @@ public:
 	}
 	// Searching -- Binary Search -- Big O = O(log N)
 	virtual int search(T searchKey) = 0;
+
 	// Overloaded [] operator
 	const T& operator[](int index)
 	{
@@ -97,7 +100,7 @@ protected:
 		m_array = temp;
 		temp = NULL;
 		m_maxSize += m_growSize;
-		m_growSize++; // Grow size increases every time Expand() is used
+		m_growSize+= 2; // Grow size increases every time Expand() is used
 
 		return true;
 	}
