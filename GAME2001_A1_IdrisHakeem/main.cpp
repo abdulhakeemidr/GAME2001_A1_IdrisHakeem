@@ -6,14 +6,14 @@ using namespace std;
 int main()
 {
 	cout << "Recursive Binary Search Example" << endl;
-	OrderedArray<int> array(3);
-	//UnorderedArray<int> array(3);
+	//OrderedArray<int> array(3);
+	UnorderedArray<int> array(3);
 
 	// Test expansion of array
 	array.push(43);
 	array.push(6);
 	array.push(23);
-	array.push(43);
+	//array.push(43);
 	array.push(94);
 	array.push(17);
 	array.push(83);
