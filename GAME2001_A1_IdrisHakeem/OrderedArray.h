@@ -11,6 +11,7 @@ public:
 	// Destructor
 	~OrderedArray()
 	{
+		std::cout << "OrderedArrary Destructor\n";
 		if (Array<T>::m_array != NULL)
 		{
 			delete[] Array<T>::m_array;
@@ -20,7 +21,7 @@ public:
 	// Insertion -- Big O = O(N)
 	int push(T val)
 	{
-		//assert(m_array != NULL);
+		assert(Array<T>::m_array != NULL);
 		if (Array<T>::m_numElements >= Array<T>::m_maxSize)
 		{
 			Array<T>::Expand();
@@ -32,6 +33,11 @@ public:
 			if (Array<T>::m_array[i] > val)
 			{
 				break;
+			}
+			// Exits out of the function when the value pushed is the same as a value stored in the array (m_array)
+			else if (Array<T>::m_array[i] == val) // This returns an error value to reject the duplicate value
+			{
+				return -1;
 			}
 		}
 		// Step 2: Shift everything to the right of the indexx forward by one

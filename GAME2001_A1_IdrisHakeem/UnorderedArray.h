@@ -11,34 +11,37 @@ public:
 	// Destructor
 	~UnorderedArray()
 	{
-		if (m_array != NULL)
+		std::cout << "UnorderedArrary Destructor\n";
+		if (Array<T>::m_array != NULL)
 		{
-			delete[] m_array;
-			m_array = NULL;
+			delete[] Array<T>::m_array;
+			Array<T>::m_array = NULL;
 		}
 	}
 	// Insertions
 	// Fast insertion for UnorderedArray -- Big-O is O(1)
-	void push(T val)
+	int push(T val)
 	{
-		assert(m_array != NULL); // Debugging purposes
-		if (m_numElements >= m_maxSize)
+		assert(Array<T>::m_array != NULL); // Debugging purposes
+		if (Array<T>::m_numElements >= Array<T>::m_maxSize)
 		{
-			Expand();
+			Array<T>::Expand();
 		}
 		// My array has space for the new value
-		m_array[m_numElements] = val;
-		m_numElements++;
+		Array<T>::m_array[Array<T>::m_numElements] = val;
+		int index = Array<T>::m_numElements;
+		Array<T>::m_numElements++;
+		return index;
 	}
 	// Searching (Linear search) -- Big O = O(N)
 	int search(T val)
 	{
-		assert(m_array != NULL);
+		assert(Array<T>::m_array != NULL);
 
 		// Brute force search
-		for (int i = 0; i < m_numElements; i++)
+		for (int i = 0; i < Array<T>::m_numElements; i++)
 		{
-			if (m_array[i] == val)
+			if (Array<T>::m_array[i] == val)
 			{
 				return i;
 			}
